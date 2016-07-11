@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>VideoSnap by matthutchinson</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>VideoSnap</h1>
+        <p>Simple command line app to record video and audio from a QuickTime capture device</p>
+        <p class="view"><a href="https://github.com/matthutchinson/videosnap">View the Project on GitHub <small>matthutchinson/videosnap</small></a></p>
+        <ul>
+          <li><a href="https://github.com/matthutchinson/videosnap/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/matthutchinson/videosnap/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/matthutchinson/videosnap">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="videosnap" class="anchor" href="#videosnap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>VideoSnap</h1>
+
+<p>VideoSnap is an OSX command line tool for recording video and audio from any
+attached capture device.</p>
+
+<p>You can specify which device to capture from, the duration, encoding, delay
+period (before capturing starts) and disable audio capturing.</p>
+
+<p>By default VideoSnap will capture both video and audio from the default capture
+device at 30fps, with a Medium quality preset and a short (0.5s) warm-up delay.</p>
+
+<p>If no duration is specified, VideoSnap will record until you cancel with
+[Ctrl+c]. You can also use VideoSnap to list attached capture devices by name.</p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>OSX 10.7+ (x86_64)</li>
+<li>A web cam</li>
+</ul>
+
+<p>If you need to capture video on older versions of OSX (or on 32-bit hardware),
+try <a href="http://webcam-tools.sourceforge.net">wacaw</a>.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>The following options are available:</p>
+
+<pre><code>  -l    List attached capture devices
+  -w    Set delay before capturing starts (in seconds, default 0.5s)
+  -t    Set duration of video (in seconds)
+  -d    Set the capture device by name (use -l to list attached devices)
+  -p    Set the encoding preset (use High, Medium (default), Low, 640x480 or 1280x720)
+  -v    Turn ON verbose mode (OFF by default)
+  -h    Show help
+  --no-audio
+        Don't capture audio (audio IS captured by default)
+</code></pre>
+
+<h3>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h3>
+
+<p>Capture 10.75 secs of video in 1280x720 720p HD format saving to movie.mov</p>
+
+<pre><code>videosnap -t 10.75 -p '1280x720'
+</code></pre>
+
+<p>Capture 1 minute of video (Medium preset), but no audio from the "Built-in
+iSight" device, delaying for 5 secs, saving to my_video.mov</p>
+
+<pre><code>videosnap -t 60 -w 5 -d 'Built-in iSight' --no-audio my_video.mov
+</code></pre>
+
+<p>List all attached devices by name</p>
+
+<pre><code>videosnap -l
+</code></pre>
+
+<h3>
+<a id="warming-up" class="anchor" href="#warming-up" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Warming Up</h3>
+
+<p>Since some camera hardware can take a while to warm up, a default delay of 0.5
+seconds is applied. Override this with the <code>-w</code> argument (0 meaning no delay).</p>
+
+<h3>
+<a id="encoding-presets" class="anchor" href="#encoding-presets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Encoding Presets</h3>
+
+<p>The AVFoundation framework provides the following video encoding presets:</p>
+
+<table>
+<thead>
+<tr>
+<th>Resolution</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High</td>
+<td>Highest recording quality. This varies per device.</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>Suitable for Wi-Fi sharing. The actual values may change.</td>
+</tr>
+<tr>
+<td>Low</td>
+<td>Suitable for 3G sharing. The actual values may change.</td>
+</tr>
+<tr>
+<td>640x480</td>
+<td>VGA.</td>
+</tr>
+<tr>
+<td>1280x720</td>
+<td>720p HD.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Use the <code>-p</code> flag to set which preset to apply.</p>
+
+<h2>
+<a id="help" class="anchor" href="#help" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Help</h2>
+
+<p>Get command help with:</p>
+
+<pre><code>videosnap -h
+</code></pre>
+
+<p>If you have any problems, please do <a href="https://github.com/matthutchinson/videosnap/issues">raise an
+issue</a> on GitHub. When
+reporting a bug, remember to mention what platform and hardware you are using
+and the steps I can take to reproduce the issue.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Bug <a href="https://github.com/matthutchinson/videosnap/issues">reports</a> and <a href="https://github.com/matthutchinson/videosnap/pulls">pull
+requests</a> are welcome on
+GitHub. Before submitting pull requests, please read the <a href="https://github.com/matthutchinson/lifx_dash/blob/master/CONTRIBUTING.md">contributing
+guidelines</a>
+for more details.</p>
+
+<h2>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development</h2>
+
+<p>VideoSnap is coded with Objective-C and uses the
+<a href="https://developer.apple.com/av-foundation/">AVFoundation</a> framework. You can
+build the project with <a href="http://developer.apple.com/xcode/">Xcode</a> (using the
+Xcode project workspace in the repository, or with the <code>xcodebuild</code> command).</p>
+
+<h2>
+<a id="future-work" class="anchor" href="#future-work" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Future Work</h2>
+
+<ul>
+<li>Allow VideoSnap to pipe captured bytes to the STDOUT stream</li>
+<li>Submit VideoSnap as a package for <a href="http://brew.sh">Homebrew</a>
+</li>
+<li>Default filename should include a timestamp of when recording began</li>
+<li>Allow more size/quality options for video and/or audio</li>
+<li>Allow VideoSnap to capture a single frame to an image file (with compression
+options based on file type like <a href="https://github.com/rharder/imagesnap">ImageSnap</a>)</li>
+<li>A comprehensive test suite in Xcode</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>VideoSnap is distributed under the terms of the <a href="http://opensource.org/licenses/MIT">MIT
+License</a>.</p>
+
+<h2>
+<a id="whos-who" class="anchor" href="#whos-who" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Who's Who?</h2>
+
+<ul>
+<li>
+<a href="http://github.com/matthutchinson/videosnap">VideoSnap</a> by <a href="http://matthewhutchinson.net">Matthew Hutchinson</a>
+</li>
+<li>Inspired by <a href="https://github.com/rharder/imagesnap">ImageSnap</a> by <a href="https://github.com/rharder">@rharder</a>
+</li>
+</ul>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/matthutchinson">matthutchinson</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
