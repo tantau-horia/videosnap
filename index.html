@@ -54,6 +54,20 @@ device at 30fps, with a Medium quality preset and a short (0.5s) warm-up delay.<
 try <a href="http://webcam-tools.sourceforge.net">wacaw</a>.</p>
 
 <h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Download the <a href="https://github.com/matthutchinson/videosnap/tree/master/release">latest
+release</a> and
+unpack it like so:</p>
+
+<pre><code>tar -zxvf videosnap-[version].tar.gz
+cp -R videosnap/usr/local/* /usr/local/
+</code></pre>
+
+<p>This will unzip the archive, and copy the binary and man page to your
+<code>/usr/local</code> directories.</p>
+
+<h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>The following options are available:</p>
@@ -138,6 +152,8 @@ seconds is applied. Override this with the <code>-w</code> argument (0 meaning n
 <p>Get command help with:</p>
 
 <pre><code>videosnap -h
+# or via the man page with
+man videosnap
 </code></pre>
 
 <p>If you have any problems, please do <a href="https://github.com/matthutchinson/videosnap/issues">raise an
@@ -150,8 +166,14 @@ and the steps I can take to reproduce the issue.</p>
 
 <p>Bug <a href="https://github.com/matthutchinson/videosnap/issues">reports</a> and <a href="https://github.com/matthutchinson/videosnap/pulls">pull
 requests</a> are welcome on
-GitHub. Before submitting pull requests, please read the <a href="https://github.com/matthutchinson/lifx_dash/blob/master/CONTRIBUTING.md">contributing
+GitHub. Before submitting pull requests, please read the <a href="https://github.com/matthutchinson/videosnap/blob/master/CONTRIBUTING.md">contributing
 guidelines</a>
+for more details.</p>
+
+<p>This project is intended to be a safe, welcoming space for collaboration, and
+contributors are expected to adhere to the <a href="http://contributor-covenant.org">Contributor
+Covenant</a> code of conduct. See
+<a href="https://github.com/matthutchinson/videosnap/blob/master/CODE_OF_CONDUCT.md">here</a>
 for more details.</p>
 
 <h2>
@@ -164,6 +186,10 @@ Xcode project workspace in the repository, or with the <code>xcodebuild</code> c
 
 <h2>
 <a id="future-work" class="anchor" href="#future-work" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Future Work</h2>
+
+<p>Work in progress is usually mentioned at the top of the
+<a href="https://github.com/matthutchinson/videosnap/blob/master/CHANGELOG.md">CHANGELOG</a>.
+If you'd like to get involved in contributing, here are some ideas:</p>
 
 <ul>
 <li>Allow VideoSnap to pipe captured bytes to the STDOUT stream</li>
