@@ -1,0 +1,82 @@
+.\"Modified from man(1) of FreeBSD, the NetBSD mdoc.template, and mdoc.samples.
+.\"See Also:
+.\"man mdoc.samples for a complete listing of options
+.\"man mdoc for the short list of editing options
+.\"/usr/share/misc/mdoc.template
+.Dd 05/09/2013           \" DATE
+.Dt videosnap 1          \" Program name and manual section number
+.Os Darwin
+.Sh NAME                 \" Section Header - required - don't modify
+.Nm videosnap
+.\" Use .Nm macro to designate other names for the documented program.
+.Nd Record video and audio from a capture device
+.Sh SYNOPSIS             \" Section Header - required - don't modify
+.Nm
+.Op options
+.Op file ...
+.Sh DESCRIPTION          \" Section Header - required - don't modify
+.Nm
+is an OSX command line tool for recording video and audio from any attached
+capture device.
+.Pp
+You can specify which device to capture from, the duration, encoding and a delay
+period (before capturing starts). You can also disable audio recording.
+By default videosnap will capture both video and audio from the default capture
+device at 30fps, with a Medium quality preset and a short (0.5s) warm-up delay.
+.Pp
+If no duration is specified, videosnap will record until you cancel with [Ctrl+c]
+.Pp
+You can also use
+.Nm
+to list attached capture devices by name.
+.Pp
+The following options are available:
+.Bl -tag -width -indent
+.It Fl l
+List attached capture devices
+.It Fl w
+Set delay before capturing starts (in seconds, default 0s)
+.It Fl t
+Set duration of video (in seconds)
+.It Fl d
+Set the capture device (by name, use -l to list attached devices)
+.It Fl p
+Set the encoding preset (use High, Medium (default), Low, 640x480 or 1280x720)
+.It Fl -no-audio
+Don't capture audio (audio
+.Ar IS
+captured by default)
+.It Fl v
+Turn ON verbose mode (OFF by default)
+.It Fl h
+Show help
+.El
+.Pp
+.Sh EXAMPLES
+.Pp
+Capture 10.75 secs of video in 1280x720 720HD format to movie.mov
+.Pp
+.Nm
+-t 10.75 -p '1280x720'
+.Pp
+Capture 1 minute of video (Medium preset), but no audio from the
+"Built-in iSight" device, delaying for 5 secs, saving to my_video.mov
+.Pp
+.Nm
+-t 60 -w 5 -d 'Built-in iSight' --no-audio my_video.mov
+.Pp
+.Sh FILES                \" File used or created by the topic of the man page
+.Bl -tag -width "./videosnap" -compact
+.It Pa ./videosnap
+videosnap (main executable)
+.El
+.Sh BUGS                 \" Document known, unremedied bugs
+No known bugs. Please report any issues here: https://github.com/matthutchinson/videosnap/issues
+.Sh HISTORY              \" Document history if command behaves in a unique manner
+.Bl -tag -width -indent
+.It 0.0.2
+2016-Jul-07 AV Foundation Release
+.It 0.0.1
+2013-Sep-08 Initial Release
+.El
+.Pp
